@@ -1,0 +1,11 @@
+# robots.txt for PrestigeSync
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://prestigesync.vercel.app/sitemap.xml
+
+# Block unnecessary paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /private/
