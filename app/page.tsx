@@ -1,65 +1,111 @@
-import Image from "next/image";
+import Image from 'next/image';
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main className="min-h-screen bg-[#0a0a0a] text-white overflow-hidden">
+      {/* Navbar */}
+      <nav className="fixed top-0 w-full z-50 border-b border-white/10 bg-black/80 backdrop-blur-md">
+        <div className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 bg-gradient-to-br from-orange-500 to-amber-500 rounded-xl flex items-center justify-center font-bold text-xl">
+              PS
+            </div>
+            <h1 className="text-2xl font-semibold tracking-tight">PrestigeSync</h1>
+          </div>
+          <div className="hidden md:flex gap-8 text-sm">
+            <a href="#products" className="hover:text-orange-400 transition">Produk</a>
+            <a href="#about" className="hover:text-orange-400 transition">Tentang</a>
+          </div>
+          <a href="#products" className="px-6 py-2.5 bg-white text-black rounded-full font-medium hover:bg-orange-400 hover:text-white transition">
+            Lihat Produk
+          </a>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="pt-32 pb-24 px-6 text-center">
+        <div className="max-w-4xl mx-auto">
+          <p className="text-orange-400 text-sm tracking-widest mb-4">EST. 2024 • INDONESIA</p>
+          <h1 className="text-6xl md:text-7xl font-bold leading-tight mb-6">
+            Synced with<br />
+            <span className="bg-gradient-to-r from-orange-400 via-amber-400 to-yellow-400 bg-clip-text text-transparent">
+            Excellence
+            </span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            Brand teknologi yang menggabungkan kesederhanaan, kecerdasan, dan pengalaman premium.
           </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
+            <a href="#products" className="px-8 py-4 bg-orange-500 hover:bg-orange-600 rounded-2xl text-lg font-semibold transition">
+              Jelajahi Produk
+            </a>
+            <a href="#contact" className="px-8 py-4 border border-white/30 hover:bg-white/5 rounded-2xl text-lg font-semibold transition">
+              Hubungi Kami
+            </a>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Products */}
+      <section id="products" className="py-20 bg-black/60">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-4xl font-bold text-center mb-16">Produk Kami</h2>
+
+          <div className="grid md:grid-cols-2 gap-10">
+            {/* Math Rush */}
+            <div className="group bg-zinc-900 rounded-3xl overflow-hidden border border-white/10 hover:border-orange-500/50 transition-all">
+              <div className="h-80 bg-zinc-800 flex items-center justify-center p-8 relative">
+                <Image 
+                  src="https://i.imgur.com/0z3vK8L.png" 
+                  alt="Math Rush" 
+                  width={300} 
+                  height={300}
+                  className="group-hover:scale-110 transition-transform duration-700"
+                />
+              </div>
+              <div className="p-8">
+                <span className="px-4 py-1.5 bg-orange-500/10 text-orange-400 text-sm rounded-full">Game Edukasi</span>
+                <h3 className="text-3xl font-semibold mt-4 mb-3">Math Rush</h3>
+                <p className="text-gray-400 leading-relaxed">
+                  Game matematika penjumlahan dan pengurangan sederhana hanya menggunakan angka 1, 2, dan 3. 
+                  Cocok untuk anak-anak dan pemula.
+                </p>
+                <button className="mt-8 w-full py-3.5 bg-white text-black rounded-2xl font-medium hover:bg-orange-400 hover:text-white transition">
+                  Download di Google Play
+                </button>
+              </div>
+            </div>
+
+            {/* Video Clipper */}
+            <div className="group bg-zinc-900 rounded-3xl overflow-hidden border border-white/10 hover:border-purple-500/30 transition-all opacity-90">
+              <div className="h-80 bg-gradient-to-br from-purple-950 to-zinc-900 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-7xl mb-6">🎬</div>
+                  <p className="text-2xl font-semibold text-purple-300">Coming Soon</p>
+                </div>
+              </div>
+              <div className="p-8">
+                <span className="px-4 py-1.5 bg-purple-500/10 text-purple-400 text-sm rounded-full">Productivity Tool</span>
+                <h3 className="text-3xl font-semibold mt-4 mb-3">Video Clipper Desktop</h3>
+                <p className="text-gray-400 leading-relaxed">
+                  Tool canggih untuk memotong, mengedit, dan mengoptimasi video clip dengan cepat. 
+                  Saat ini masih dalam tahap pengembangan.
+                </p>
+                <button className="mt-8 w-full py-3.5 border border-white/30 rounded-2xl font-medium hover:bg-white/5 transition">
+                  Notify Me Saat Rilis
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-white/10 py-12 text-center text-sm text-gray-500">
+        <p>© 2024 - {new Date().getFullYear()} PrestigeSync. All rights reserved.</p>
+        <p className="mt-2">Made with passion in Indonesia</p>
+      </footer>
+    </main>
   );
 }
