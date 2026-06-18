@@ -7,7 +7,7 @@ export default function Home() {
       <nav className="fixed top-0 w-full z-50 border-b border-white/10 bg-black/80 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 bg-gradient-to-br from-orange-500 to-amber-500 rounded-xl flex items-center justify-center font-bold text-xl">
+            <div className="w-9 h-9 bg-linear-to-br from-orange-500 to-amber-500 rounded-xl flex items-center justify-center font-bold text-xl">
               PS
             </div>
             <h1 className="text-2xl font-semibold tracking-tight">PrestigeSync</h1>
@@ -28,7 +28,7 @@ export default function Home() {
           <p className="text-orange-400 text-sm tracking-widest mb-4">EST. 2024 • INDONESIA</p>
           <h1 className="text-6xl md:text-7xl font-bold leading-tight mb-6">
             Synced with<br />
-            <span className="bg-gradient-to-r from-orange-400 via-amber-400 to-yellow-400 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-orange-400 via-amber-400 to-yellow-400 bg-clip-text text-transparent">
             Excellence
             </span>
           </h1>
@@ -79,7 +79,7 @@ export default function Home() {
 
             {/* Video Clipper */}
             <div className="group bg-zinc-900 rounded-3xl overflow-hidden border border-white/10 hover:border-purple-500/30 transition-all opacity-90">
-              <div className="h-80 bg-gradient-to-br from-purple-950 to-zinc-900 flex items-center justify-center">
+              <div className="h-80 bg-linear-to-br from-purple-950 to-zinc-900 flex items-center justify-center">
                 <div className="text-center">
                   <div className="text-7xl mb-6">🎬</div>
                   <p className="text-2xl font-semibold text-purple-300">Coming Soon</p>
