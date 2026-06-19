@@ -52,7 +52,7 @@ export default function PrivacyPolicyPage() {
       <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated revision date.</p>
 
       <h2 style={{ fontSize: "20px", marginTop: "32px" }}>8. Contact Us</h2>
-      <p>If you have any questions about this Privacy Policy, please contact us at:<br /><strong>Email:</strong> syncperstige@gmail.com</p>
+      <p>If you have any questions about this Privacy Policy, please contact us at:<br /><strong>Email:</strong> syncprestige@gmail.com</p>
     </main>
   );
 }
