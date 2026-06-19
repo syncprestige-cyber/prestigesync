@@ -55,13 +55,13 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-10">
             {/* Math Rush */}
             <div className="group bg-zinc-900 rounded-3xl overflow-hidden border border-white/10 hover:border-orange-500/50 transition-all">
-              <div className="h-80 bg-zinc-800 flex items-center justify-center p-8 relative">
+              <div className="h-80 bg-zinc-800 relative overflow-hidden">
                 <Image 
-                  src="https://i.imgur.com/0z3vK8L.png" 
+                  src="/mathrush-logo.png" 
                   alt="Math Rush" 
-                  width={300} 
-                  height={300}
-                  className="group-hover:scale-110 transition-transform duration-700"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-contain p-8 group-hover:scale-110 transition-transform duration-700"
                 />
               </div>
               <div className="p-8">
