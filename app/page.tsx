@@ -68,12 +68,17 @@ export default function Home() {
                 <span className="px-4 py-1.5 bg-orange-500/10 text-orange-400 text-sm rounded-full">Game Edukasi</span>
                 <h3 className="text-3xl font-semibold mt-4 mb-3">Math Rush</h3>
                 <p className="text-gray-400 leading-relaxed">
-                  Game matematika penjumlahan dan pengurangan sederhana hanya menggunakan angka 1, 2, dan 3. 
-                  Cocok untuk anak-anak dan pemula.
+                  Game matematika cepat dengan operasi penjumlahan dan pengurangan sederhana.
+                  Cocok untuk siapa saja yang ingin melatih kemampuan berhitung dengan cara yang seru.
                 </p>
-                <button className="mt-8 w-full py-3.5 bg-white text-black rounded-2xl font-medium hover:bg-orange-400 hover:text-white transition">
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-8 block w-full py-3.5 bg-white text-black rounded-2xl font-medium text-center hover:bg-orange-400 hover:text-white transition"
+                >
                   Download di Google Play
-                </button>
+                </a>
               </div>
             </div>
 
@@ -105,6 +110,11 @@ export default function Home() {
       <footer className="border-t border-white/10 py-12 text-center text-sm text-gray-500">
         <p>© 2024 - {new Date().getFullYear()} PrestigeSync. All rights reserved.</p>
         <p className="mt-2">Made with passion in Indonesia</p>
+        <p className="mt-4">
+          <a href="/privacy" className="hover:text-orange-400 transition underline">
+            Privacy Policy
+          </a>
+        </p>
       </footer>
     </main>
   );
