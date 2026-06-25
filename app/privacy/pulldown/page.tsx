@@ -37,24 +37,25 @@ export default function PullDownPrivacyPolicy() {
 
         <h2 className="text-2xl font-semibold mt-10 mb-4">2. Media Download Functionality</h2>
         <p className="text-gray-300 leading-relaxed">
-          PullDown allows users to download publicly accessible video and audio content
-          from URLs that the user provides. The app processes the URL locally on your
-          device to fetch and save the requested media file to your device&apos;s storage.
+          PullDown allows users to download publicly accessible video, audio, and other
+          file content from URLs that the user provides. The app processes the URL
+          locally on your device to fetch and save the requested file to your
+          device&apos;s storage.
         </p>
         <p className="text-gray-300 leading-relaxed mt-4">
-          We do not host, store, or have access to any media files you download. All
+          We do not host, store, or have access to any files you download. All
           downloaded content is saved directly to your device and remains under your
           control. Users are solely responsible for ensuring they have the right to
           download and use any content they access through the app, and for complying
-          with the terms of service of the platforms they download from, as well as
-          applicable copyright laws.
+          with the terms of service of the source platforms they download from, as well
+          as applicable copyright laws.
         </p>
 
         <h2 className="text-2xl font-semibold mt-10 mb-4">3. Device Storage Permission</h2>
         <p className="text-gray-300 leading-relaxed">
-          PullDown requests storage-related permissions solely to save downloaded media
-          files to your device. These permissions are used only for this purpose and are
-          not used to access, scan, or upload any other files on your device.
+          PullDown requests storage-related permissions solely to save downloaded files
+          to your device. These permissions are used only for this purpose and are not
+          used to access, scan, or upload any other files on your device.
         </p>
 
         <h2 className="text-2xl font-semibold mt-10 mb-4">4. Advertising (Google AdMob)</h2>
