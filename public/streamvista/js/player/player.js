@@ -219,10 +219,24 @@ function initCustomControls() {
         }, 3000);
     };
     wrap.addEventListener("mousemove", showControls);
+    let _touchStartY = 0;
     wrap.addEventListener(
         "touchstart",
-        () => {
+        (e) => {
+            _touchStartY = e.touches[0].clientY;
             wrap.classList.toggle("show-controls");
+        },
+        { passive: true },
+    );
+
+    // Swipe atas → channel sebelumnya, swipe bawah → channel berikutnya
+    wrap.addEventListener(
+        "touchend",
+        (e) => {
+            const dy = e.changedTouches[0].clientY - _touchStartY;
+            if (Math.abs(dy) > 50) {
+                navigateChannel(dy < 0 ? -1 : 1);
+            }
         },
         { passive: true },
     );
@@ -279,8 +293,14 @@ function initCustomControls() {
     });
 
     vcFullscreen.addEventListener("click", () => {
-        if (document.fullscreenElement) document.exitFullscreen();
-        else wrap.requestFullscreen?.();
+        if (document.fullscreenElement) {
+            document.exitFullscreen();
+        } else if (wrap.requestFullscreen) {
+            wrap.requestFullscreen();
+        } else if (el.video.webkitEnterFullscreen) {
+            // Fallback untuk Chrome Android
+            el.video.webkitEnterFullscreen();
+        }
     });
 
     // Picture-in-Picture
