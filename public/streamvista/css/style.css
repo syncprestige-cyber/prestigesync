@@ -1348,7 +1348,6 @@ main {
     pointer-events: none;
     transform: translate(-50%, -50%) scale(0.82);
 }
-.video-wrap.is-playing:hover .vc-center-play,
 .video-wrap.is-playing.show-controls .vc-center-play {
     opacity: 1;
     pointer-events: all;
@@ -1462,7 +1461,7 @@ main {
     transition: opacity 0.25s;
     pointer-events: none;
 }
-.video-wrap:hover .vc-wrap,
+/* SESUDAH */
 .video-wrap.show-controls .vc-wrap {
     opacity: 1;
     pointer-events: all;
