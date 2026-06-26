@@ -3,71 +3,109 @@ import Image from 'next/image';
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-white overflow-hidden">
+
       {/* Navbar */}
-      <nav className="fixed top-0 w-full z-50 border-b border-white/10 bg-black/80 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+      <nav className="fixed top-0 w-full z-50 border-b border-white/[0.07] bg-[#0a0a0a]/90 backdrop-blur-md">
+        <div className="max-w-6xl mx-auto px-8 py-4 flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 bg-linear-to-br from-orange-500 to-amber-500 rounded-xl flex items-center justify-center font-bold text-xl">
-              PS
+            <div className="w-9 h-9 rounded-xl overflow-hidden flex items-center justify-center relative">
+              <Image
+                src="/PrestigeSync.png"
+                alt="PrestigeSync Logo"
+                width={36}
+                height={36}
+                className="object-contain"
+              />
             </div>
-            <h1 className="text-2xl font-semibold tracking-tight">PrestigeSync</h1>
+            <span className="text-[17px] font-semibold tracking-tight">PrestigeSync</span>
           </div>
-          <div className="hidden md:flex gap-8 text-sm">
-            <a href="#products" className="hover:text-orange-400 transition">Produk</a>
-            <a href="#about" className="hover:text-orange-400 transition">Tentang</a>
+
+          <div className="hidden md:flex gap-8">
+            <a href="#products" className="text-sm text-white/50 hover:text-white transition-colors duration-200">Produk</a>
+            <a href="#about" className="text-sm text-white/50 hover:text-white transition-colors duration-200">Tentang</a>
           </div>
-          <a href="#products" className="px-6 py-2.5 bg-white text-black rounded-full font-medium hover:bg-orange-400 hover:text-white transition">
+
+          <a
+            href="#products"
+            className="px-5 py-2 border border-white/15 rounded-full text-sm font-medium hover:bg-white/[0.07] transition-all duration-200"
+          >
             Lihat Produk
           </a>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-24 px-6 text-center">
-        <div className="max-w-4xl mx-auto">
-          <p className="text-orange-400 text-sm tracking-widest mb-4">EST. 2024 • INDONESIA</p>
-          <h1 className="text-6xl md:text-7xl font-bold leading-tight mb-6">
+      <section className="pt-40 pb-20 px-8 text-center">
+        <div className="max-w-3xl mx-auto">
+          <p className="text-[11px] tracking-[2.5px] text-orange-500 uppercase mb-7 font-medium">
+            Est. 2024 &nbsp;·&nbsp; Indonesia
+          </p>
+
+          <h1 className="text-[64px] md:text-[72px] font-bold leading-[1.07] tracking-[-2.5px] mb-6">
             Synced with<br />
-            <span className="bg-linear-to-r from-orange-400 via-amber-400 to-yellow-400 bg-clip-text text-transparent">
-            Excellence
-            </span>
+            <span className="text-orange-500">Excellence.</span>
           </h1>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+
+          <p className="text-[17px] leading-relaxed text-white/45 max-w-md mx-auto mb-10 font-normal">
             Brand teknologi yang menggabungkan kesederhanaan, kecerdasan, dan pengalaman premium.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
-            <a href="#products" className="px-8 py-4 bg-orange-500 hover:bg-orange-600 rounded-2xl text-lg font-semibold transition">
+          <div className="flex gap-3 justify-center items-center">
+            <a
+              href="#products"
+              className="px-7 py-3.5 bg-orange-500 hover:bg-orange-600 text-white rounded-full text-[15px] font-semibold transition-all duration-200 tracking-tight"
+            >
               Jelajahi Produk
             </a>
-            <a href="#contact" className="px-8 py-4 border border-white/30 hover:bg-white/5 rounded-2xl text-lg font-semibold transition">
-              Hubungi Kami
+            <a
+              href="#contact"
+              className="px-7 py-3.5 text-white/55 hover:text-white text-[15px] font-medium transition-colors duration-200 tracking-tight"
+            >
+              Hubungi Kami →
             </a>
           </div>
         </div>
       </section>
 
-      {/* Products */}
-      <section id="products" className="py-20 bg-black/60">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-16">Produk Kami</h2>
+      {/* Stats Bar */}
+      <div className="border-t border-b border-white/[0.07] py-8">
+        <div className="max-w-xl mx-auto flex justify-center gap-16 text-center">
+          <div>
+            <p className="text-xl font-bold tracking-tight">2+</p>
+            <p className="text-xs text-white/35 mt-1 tracking-wide">Produk Aktif</p>
+          </div>
+          <div>
+            <p className="text-xl font-bold tracking-tight">2024</p>
+            <p className="text-xs text-white/35 mt-1 tracking-wide">Didirikan</p>
+          </div>
+          <div>
+            <p className="text-xl font-bold tracking-tight">🇮🇩</p>
+            <p className="text-xs text-white/35 mt-1 tracking-wide">Made in Indonesia</p>
+          </div>
+        </div>
+      </div>
 
-          <div className="grid md:grid-cols-3 gap-10">
+      {/* Products */}
+      <section id="products" className="py-24 px-8">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-[36px] font-bold tracking-tight text-center mb-16">Produk Kami</h2>
+
+          <div className="grid md:grid-cols-3 gap-6">
             {/* Math Rush */}
-            <div className="group bg-zinc-900 rounded-3xl overflow-hidden border border-white/10 hover:border-orange-500/50 transition-all">
-              <div className="h-80 bg-zinc-800 relative overflow-hidden">
-                <Image 
-                  src="/mathrush-logo.png" 
-                  alt="Math Rush" 
+            <div className="group bg-zinc-900/60 rounded-2xl overflow-hidden border border-white/[0.08] hover:border-orange-500/40 transition-all duration-300">
+              <div className="h-64 bg-zinc-800/60 relative overflow-hidden">
+                <Image
+                  src="/mathrush-logo.png"
+                  alt="Math Rush"
                   fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-contain p-8 group-hover:scale-110 transition-transform duration-700"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-contain p-10 group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
-              <div className="p-8">
-                <span className="px-4 py-1.5 bg-orange-500/10 text-orange-400 text-sm rounded-full">Game Edukasi</span>
-                <h3 className="text-3xl font-semibold mt-4 mb-3">Math Rush</h3>
-                <p className="text-gray-400 leading-relaxed">
+              <div className="p-7">
+                <span className="px-3 py-1 bg-orange-500/10 text-orange-400 text-xs rounded-full font-medium">Game Edukasi</span>
+                <h3 className="text-2xl font-semibold tracking-tight mt-4 mb-2">Math Rush</h3>
+                <p className="text-white/45 text-sm leading-relaxed">
                   Game matematika cepat dengan operasi penjumlahan dan pengurangan sederhana.
                   Cocok untuk siapa saja yang ingin melatih kemampuan berhitung dengan cara yang seru.
                 </p>
@@ -75,7 +113,7 @@ export default function Home() {
                   href="#"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-8 block w-full py-3.5 bg-white text-black rounded-2xl font-medium text-center hover:bg-orange-400 hover:text-white transition"
+                  className="mt-7 block w-full py-3 bg-white text-black rounded-full text-sm font-semibold text-center hover:bg-orange-500 hover:text-white transition-all duration-200"
                 >
                   Download di Google Play
                 </a>
@@ -83,58 +121,58 @@ export default function Home() {
             </div>
 
             {/* Video Clipper */}
-            <div className="group bg-zinc-900 rounded-3xl overflow-hidden border border-white/10 hover:border-purple-500/30 transition-all opacity-90">
-              <div className="h-80 bg-linear-to-br from-purple-950 to-zinc-900 flex items-center justify-center">
+            <div className="group bg-zinc-900/60 rounded-2xl overflow-hidden border border-white/[0.08] hover:border-purple-500/30 transition-all duration-300">
+              <div className="h-64 bg-gradient-to-br from-purple-950/60 to-zinc-900 flex items-center justify-center">
                 <div className="text-center">
-                  <div className="text-7xl mb-6">🎬</div>
-                  <p className="text-2xl font-semibold text-purple-300">Coming Soon</p>
+                  <div className="text-6xl mb-4">🎬</div>
+                  <p className="text-lg font-medium text-purple-300/80">Coming Soon</p>
                 </div>
               </div>
-              <div className="p-8">
-                <span className="px-4 py-1.5 bg-purple-500/10 text-purple-400 text-sm rounded-full">Productivity Tool</span>
-                <h3 className="text-3xl font-semibold mt-4 mb-3">Video Clipper Desktop</h3>
-                <p className="text-gray-400 leading-relaxed">
-                  Tool canggih untuk memotong, mengedit, dan mengoptimasi video clip dengan cepat. 
+              <div className="p-7">
+                <span className="px-3 py-1 bg-purple-500/10 text-purple-400 text-xs rounded-full font-medium">Productivity Tool</span>
+                <h3 className="text-2xl font-semibold tracking-tight mt-4 mb-2">Video Clipper Desktop</h3>
+                <p className="text-white/45 text-sm leading-relaxed">
+                  Tool canggih untuk memotong, mengedit, dan mengoptimasi video clip dengan cepat.
                   Saat ini masih dalam tahap pengembangan.
                 </p>
-                <button className="mt-8 w-full py-3.5 border border-white/30 rounded-2xl font-medium hover:bg-white/5 transition">
+                <button className="mt-7 w-full py-3 border border-white/15 rounded-full text-sm font-medium hover:bg-white/[0.05] transition-all duration-200">
                   Notify Me Saat Rilis
                 </button>
               </div>
             </div>
 
             {/* StreamVista */}
-            <div className="group bg-zinc-900 rounded-3xl overflow-hidden border border-white/10 hover:border-blue-500/50 transition-all">
-            <div className="h-80 bg-linear-to-br from-blue-950 to-zinc-900 flex items-center justify-center">
+            <div className="group bg-zinc-900/60 rounded-2xl overflow-hidden border border-white/[0.08] hover:border-blue-500/40 transition-all duration-300">
+              <div className="h-64 bg-gradient-to-br from-blue-950/60 to-zinc-900 flex items-center justify-center">
                 <div className="text-center">
-                <div className="text-7xl mb-6">📺</div>
-                <p className="text-2xl font-semibold text-blue-300">StreamVista</p>
+                  <div className="text-6xl mb-4">📺</div>
+                  <p className="text-lg font-medium text-blue-300/80">StreamVista</p>
                 </div>
-            </div>
-            <div className="p-8">
-                <span className="px-4 py-1.5 bg-blue-500/10 text-blue-400 text-sm rounded-full">TV Streaming</span>
-                <h3 className="text-3xl font-semibold mt-4 mb-3">StreamVista</h3>
-                <p className="text-gray-400 leading-relaxed">
-                Tonton siaran TV dari seluruh dunia secara gratis. Ribuan channel dari berbagai negara tersedia di genggamanmu.
+              </div>
+              <div className="p-7">
+                <span className="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full font-medium">TV Streaming</span>
+                <h3 className="text-2xl font-semibold tracking-tight mt-4 mb-2">StreamVista</h3>
+                <p className="text-white/45 text-sm leading-relaxed">
+                  Tonton siaran TV dari seluruh dunia secara gratis. Ribuan channel dari berbagai negara tersedia di genggamanmu.
                 </p>
-                
-                <a href="/streamvista"
-                className="mt-8 block w-full py-3.5 bg-blue-600 text-white rounded-2xl font-medium text-center hover:bg-blue-500 transition"
+                <a
+                  href="/streamvista"
+                  className="mt-7 block w-full py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-full text-sm font-semibold text-center transition-all duration-200"
                 >
-                Buka StreamVista
+                  Buka StreamVista
                 </a>
-            </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-white/10 py-12 text-center text-sm text-gray-500">
-        <p>© 2024 - {new Date().getFullYear()} PrestigeSync. All rights reserved.</p>
-        <p className="mt-2">Made with passion in Indonesia</p>
+      <footer className="border-t border-white/[0.07] py-10 text-center text-xs text-white/30">
+        <p>© 2024 – {new Date().getFullYear()} PrestigeSync. All rights reserved.</p>
+        <p className="mt-1.5">Made with passion in Indonesia</p>
         <p className="mt-4">
-          <a href="/privacy" className="hover:text-orange-400 transition underline">
+          <a href="/privacy" className="hover:text-orange-400 transition-colors underline underline-offset-2">
             Privacy Policy
           </a>
         </p>
