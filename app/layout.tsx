@@ -31,8 +31,14 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
-        {/* Google Search Console Verification */}
-        <meta name="google-site-verification" content="dzsdy_x2sMONqkIeyyYZqpQ-738tk66JyhH1H-MbB7M" />
+        {/* Google Analytics */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-D35VJLZVFM"></script>
+        <script dangerouslySetInnerHTML={{ __html: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-D35VJLZVFM');
+        `}} />
       </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
