@@ -224,7 +224,6 @@ function initCustomControls() {
         "touchstart",
         (e) => {
             _touchStartY = e.touches[0].clientY;
-            wrap.classList.toggle("show-controls");
         },
         { passive: true },
     );
@@ -259,6 +258,12 @@ function initCustomControls() {
         wrap.classList.add("show-controls");
     });
     el.video.addEventListener("click", () => {
+        // Tap pertama: kalau controls sedang hidden, cuma tampilkan dulu.
+        // Tap kedua (controls sudah terlihat): baru toggle play/pause.
+        if (!wrap.classList.contains("show-controls")) {
+            showControls();
+            return;
+        }
         el.video.paused ? el.video.play() : el.video.pause();
         showControls();
     });
