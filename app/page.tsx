@@ -27,7 +27,7 @@ export default function Home() {
 
           <a
             href="#products"
-            className="px-5 py-2 border border-white/15 rounded-full text-sm font-medium hover:bg-white/[0.07] transition-all duration-200"
+            className="px-5 py-2 border border-white/15 rounded-full text-sm font-medium hover:bg-white/7 transition-all duration-200"
           >
             Lihat Produk
           </a>
@@ -92,7 +92,7 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-6">
             {/* Math Rush */}
-            <div className="group bg-zinc-900/60 rounded-2xl overflow-hidden border border-white/[0.08] hover:border-orange-500/40 transition-all duration-300">
+            <div className="group bg-zinc-900/60 rounded-2xl overflow-hidden border border-white/8 hover:border-orange-500/40 transition-all duration-300">
               <div className="h-64 bg-zinc-800/60 relative overflow-hidden">
                 <Image
                   src="/mathrush-logo.png"
@@ -121,8 +121,8 @@ export default function Home() {
             </div>
 
             {/* Video Clipper */}
-            <div className="group bg-zinc-900/60 rounded-2xl overflow-hidden border border-white/[0.08] hover:border-purple-500/30 transition-all duration-300">
-              <div className="h-64 bg-gradient-to-br from-purple-950/60 to-zinc-900 flex items-center justify-center">
+            <div className="group bg-zinc-900/60 rounded-2xl overflow-hidden border border-white/8 hover:border-purple-500/30 transition-all duration-300">
+              <div className="h-64 bg-linear-to-br from-purple-950/60 to-zinc-900 flex items-center justify-center">
                 <div className="text-center">
                   <div className="text-6xl mb-4">🎬</div>
                   <p className="text-lg font-medium text-purple-300/80">Coming Soon</p>
@@ -135,15 +135,15 @@ export default function Home() {
                   Tool canggih untuk memotong, mengedit, dan mengoptimasi video clip dengan cepat.
                   Saat ini masih dalam tahap pengembangan.
                 </p>
-                <button className="mt-7 w-full py-3 border border-white/15 rounded-full text-sm font-medium hover:bg-white/[0.05] transition-all duration-200">
+                <button className="mt-7 w-full py-3 border border-white/15 rounded-full text-sm font-medium hover:bg-white/5 transition-all duration-200">
                   Notify Me Saat Rilis
                 </button>
               </div>
             </div>
 
             {/* StreamVista */}
-            <div className="group bg-zinc-900/60 rounded-2xl overflow-hidden border border-white/[0.08] hover:border-blue-500/40 transition-all duration-300">
-              <div className="h-64 bg-gradient-to-br from-blue-950/60 to-zinc-900 flex items-center justify-center">
+            <div className="group bg-zinc-900/60 rounded-2xl overflow-hidden border border-white/8 hover:border-blue-500/40 transition-all duration-300">
+              <div className="h-64 bg-linear-to-br from-blue-950/60 to-zinc-900 flex items-center justify-center">
                 <div className="text-center">
                   <div className="text-6xl mb-4">📺</div>
                   <p className="text-lg font-medium text-blue-300/80">StreamVista</p>
