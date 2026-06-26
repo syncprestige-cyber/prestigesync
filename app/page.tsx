@@ -24,13 +24,6 @@ export default function Home() {
             <a href="#products" className="text-sm text-white/50 hover:text-white transition-colors duration-200">Produk</a>
             <a href="#about" className="text-sm text-white/50 hover:text-white transition-colors duration-200">Tentang</a>
           </div>
-
-          <a
-            href="#products"
-            className="px-5 py-2 border border-white/15 rounded-full text-sm font-medium hover:bg-white/7 transition-all duration-200"
-          >
-            Lihat Produk
-          </a>
         </div>
       </nav>
 
