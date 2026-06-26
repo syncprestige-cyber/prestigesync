@@ -1,0 +1,24 @@
+// js/utils/escape.js
+
+export function escapeHtml(str) {
+    return (str || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+}
+
+export function escapeAttr(str) {
+    return (str || "").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+}
+
+export function initials(name) {
+    return (name || "?")
+        .trim()
+        .split(/\s+/)
+        .slice(0, 2)
+        .map((w) => w[0])
+        .join("")
+        .toUpperCase();
+}
