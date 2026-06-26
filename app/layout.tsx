@@ -32,12 +32,12 @@ export default function RootLayout({
     >
       <head>
         {/* Google Analytics */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-D35VJLZVFM"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z255FJE85S"></script>
         <script dangerouslySetInnerHTML={{ __html: `
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-D35VJLZVFM');
+        gtag('config', 'G-Z255FJE85S');
         `}} />
       </head>
       <body className="min-h-full flex flex-col">{children}</body>
