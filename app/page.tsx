@@ -1,4 +1,5 @@
-import Image from 'next/image';
+import Image from "next/image";
+import Navbar from "@/components/Navbar";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
             <a href="#products" className="text-sm text-white/50 hover:text-white transition-colors duration-200">Produk</a>
             <a href="#about" className="text-sm text-white/50 hover:text-white transition-colors duration-200">Tentang</a>
           </div>
+
         </div>
       </nav>
 
