@@ -251,7 +251,7 @@ a {
 .topbar-actions {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 8px;
     flex-shrink: 0;
     /* margin-left: auto menyerap sisa ruang kosong di topbar,
        jadi grup ikon ini selalu nempel di ujung kanan —
@@ -283,20 +283,19 @@ html[data-theme="light"] #themeToggleBtn .icon-sun {
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
     border-bottom: 1px solid var(--border);
-    padding: 0 0 0 0;
+    overflow: hidden;
 }
 
 /* fade hint kanan/kiri menandakan strip bisa digeser */
-.filter-strip {
-    position: sticky;
-}
 .filter-strip::before,
 .filter-strip::after {
     content: "";
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 28px;
+    /* Lebaran fade diperbesar dari 20px → 40px agar sinyal visual lebih jelas
+       dan chip terakhir tidak tampak "terpotong" di tepi. */
+    width: 40px;
     z-index: 2;
     pointer-events: none;
     transition: opacity 0.15s ease;
@@ -320,12 +319,24 @@ html[data-theme="light"] #themeToggleBtn .icon-sun {
 .filter-strip:not(.at-start)::before {
     opacity: 1;
 }
+/* strip "sub" (Negara/Grup) sedikit lebih ramping dari strip Kategori
+   agar ada hierarki visual yang jelas antar baris filter */
+.filter-strip.sub {
+    border-bottom: 1px solid var(--border);
+}
+.filter-strip.sub .filter-group {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
 
 .filter-group {
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 10px 48px 10px 16px;
+    /* padding-right besar supaya chip terakhir tidak tertutup fade overlay kanan.
+       Sebelumnya 64px tapi tidak cukup karena chip bisa masih berada di bawah
+       pseudo-element ::after. Nilai 80px memberi ruang visual yang memadai. */
+    padding: 10px 80px 10px 16px;
     overflow-x: auto;
     scrollbar-width: none;
     cursor: grab;
@@ -1236,8 +1247,10 @@ main {
     main {
         padding: 24px 32px 50px;
     }
+    /* padding-right 80px: sama dengan mobile, agar fade hint kanan selalu
+       punya ruang dan chip terakhir tidak melebihi batas visual strip. */
     .filter-group {
-        padding: 11px 32px;
+        padding: 11px 80px 11px 32px;
     }
     .bottom-nav {
         display: none;
@@ -1259,8 +1272,9 @@ main {
         max-width: 1800px;
         margin: 0 auto;
     }
+    /* padding kiri ikut 48px, kanan tetap 80px untuk fade hint */
     .filter-group {
-        padding: 11px 48px;
+        padding: 11px 80px 11px 48px;
     }
 }
 
@@ -1268,7 +1282,6 @@ main {
 .video-wrap {
     position: relative;
     background: #000;
-    box-shadow: inset 0 0 0 2px #c0392b;
 }
 
 /* video-inner: wrapper tepat seukuran frame video aktual.
@@ -1768,11 +1781,7 @@ main {
     font-weight: 700;
     font-size: 22px;
     letter-spacing: -0.02em;
-    color: var(--bg-elev-1);
-}
-
-[data-theme="light"] .splash-brand {
-    color: var(--scrollbar-thumb);
+    color: var(--text-dim);
 }
 
 /* ======================================================

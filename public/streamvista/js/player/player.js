@@ -224,6 +224,8 @@ function initCustomControls() {
         "touchstart",
         (e) => {
             _touchStartY = e.touches[0].clientY;
+            // Tampilkan controls saat pertama disentuh di mobile
+            showControls();
         },
         { passive: true },
     );
@@ -235,6 +237,14 @@ function initCustomControls() {
             const dy = e.changedTouches[0].clientY - _touchStartY;
             if (Math.abs(dy) > 50) {
                 navigateChannel(dy < 0 ? -1 : 1);
+            } else {
+                // Tap biasa (bukan swipe): pastikan timer hide berjalan
+                // agar controls tidak stuck terlihat terus
+                clearTimeout(hideCtrlTimer);
+                hideCtrlTimer = setTimeout(() => {
+                    if (!el.video.paused)
+                        wrap.classList.remove("show-controls");
+                }, 3000);
             }
         },
         { passive: true },

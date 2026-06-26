@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="id">
     <head>
-    <base href="/streamvista/">
+        <base href="/streamvista/" />
         <meta charset="UTF-8" />
         <meta
             name="viewport"
@@ -735,6 +735,24 @@
             window.addEventListener("load", updateStripOffsets);
             window.addEventListener("resize", updateStripOffsets);
 
+            // Strip-strip ini tingginya bisa berubah kapan saja —
+            // chip baru datang dari app.js (fetch async), chip wrap
+            // ke baris ke-2 di layar sempit, font baru ke-load, dst.
+            // ResizeObserver memastikan offset top selalu nge-sync,
+            // tidak cuma di event load/resize seperti sebelumnya.
+            (function () {
+                const targets = [
+                    document.querySelector(".topbar"),
+                    document.getElementById("stripCategory"),
+                    document.getElementById("stripCountry"),
+                    document.getElementById("stripGroup"),
+                ].filter(Boolean);
+                if (!targets.length || typeof ResizeObserver === "undefined")
+                    return;
+                const ro = new ResizeObserver(() => updateStripOffsets());
+                targets.forEach((el) => ro.observe(el));
+            })();
+
             // Theme toggle (UI-only, tidak menyentuh logic app.js)
             (function () {
                 const btn = document.getElementById("themeToggleBtn");
@@ -784,8 +802,13 @@
                         passive: true,
                     });
                     window.addEventListener("resize", updateFade);
-                    // re-check fade saat konten chip berubah (mis. setelah fetch)
-                    new MutationObserver(updateFade).observe(track, {
+                    // re-check fade + offset saat konten chip berubah (mis. setelah fetch)
+                    new MutationObserver(() => {
+                        updateFade();
+                        if (typeof updateStripOffsets === "function") {
+                            updateStripOffsets();
+                        }
+                    }).observe(track, {
                         childList: true,
                     });
 
