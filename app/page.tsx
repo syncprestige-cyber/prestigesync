@@ -52,7 +52,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-4xl font-bold text-center mb-16">Produk Kami</h2>
 
-          <div className="grid md:grid-cols-2 gap-10">
+          <div className="grid md:grid-cols-3 gap-10">
             {/* Math Rush */}
             <div className="group bg-zinc-900 rounded-3xl overflow-hidden border border-white/10 hover:border-orange-500/50 transition-all">
               <div className="h-80 bg-zinc-800 relative overflow-hidden">
@@ -101,6 +101,29 @@ export default function Home() {
                   Notify Me Saat Rilis
                 </button>
               </div>
+            </div>
+
+            {/* StreamVista */}
+            <div className="group bg-zinc-900 rounded-3xl overflow-hidden border border-white/10 hover:border-blue-500/50 transition-all">
+            <div className="h-80 bg-linear-to-br from-blue-950 to-zinc-900 flex items-center justify-center">
+                <div className="text-center">
+                <div className="text-7xl mb-6">📺</div>
+                <p className="text-2xl font-semibold text-blue-300">StreamVista</p>
+                </div>
+            </div>
+            <div className="p-8">
+                <span className="px-4 py-1.5 bg-blue-500/10 text-blue-400 text-sm rounded-full">TV Streaming</span>
+                <h3 className="text-3xl font-semibold mt-4 mb-3">StreamVista</h3>
+                <p className="text-gray-400 leading-relaxed">
+                Tonton siaran TV dari seluruh dunia secara gratis. Ribuan channel dari berbagai negara tersedia di genggamanmu.
+                </p>
+                
+                <a href="/streamvista"
+                className="mt-8 block w-full py-3.5 bg-blue-600 text-white rounded-2xl font-medium text-center hover:bg-blue-500 transition"
+                >
+                Buka StreamVista
+                </a>
+            </div>
             </div>
           </div>
         </div>
