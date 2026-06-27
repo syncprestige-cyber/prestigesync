@@ -1686,15 +1686,40 @@ main {
 }
 
 @media (max-width: 720px) {
+    /* Di mobile, jangan pakai grid + overlay absolute (itu yang bikin
+       list channel nutupin video). Susun jadi kolom vertikal:
+       video di atas, sidebar channel scroll di bawahnya. */
     .player-overlay.sidebar-open {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: unset;
+        height: 100vh;
+        max-height: 100vh;
+        overflow-y: auto;
+    }
+    .player-overlay.sidebar-open .player-top {
+        flex-shrink: 0;
+    }
+    .player-overlay.sidebar-open .video-wrap {
+        flex-shrink: 0;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        max-height: 42vh;
+    }
+    .player-overlay.sidebar-open #playerEpg {
+        flex-shrink: 0;
+    }
+    .player-overlay.sidebar-open .player-hint {
+        flex-shrink: 0;
     }
     .player-overlay.sidebar-open .player-sidebar {
-        grid-column: 1;
-        grid-row: 2 / 5;
-        position: absolute;
-        inset: 60px 0 0 0;
-        z-index: 50;
+        position: static;
+        inset: auto;
+        z-index: auto;
+        flex: 1;
+        min-height: 280px;
+        border-left: none;
+        border-top: 1px solid var(--border);
     }
 }
 
