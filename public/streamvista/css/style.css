@@ -2042,3 +2042,22 @@ main {
     z-index: 9999;
     animation: fadeIn 0.18s ease;
 }
+
+/* ── AdSense Banner ── */
+.adsense-banner {
+    width: 100%;
+    max-width: 100%;
+    padding: 8px 16px;
+    box-sizing: border-box;
+    background: transparent;
+    /* Sembunyikan kalau kosong (belum diisi AdSense / mode dev) */
+    min-height: 0;
+}
+.adsense-banner:empty,
+.adsense-banner ins:empty {
+    display: none;
+}
+/* Di dalam player overlay — jangan tampil */
+#playerOverlay .adsense-banner {
+    display: none;
+}
