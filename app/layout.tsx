@@ -15,7 +15,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "PrestigeSync - Synced with Excellence",
-  description: "Brand teknologi yang menggabungkan kesederhanaan, kecerdasan, dan pengalaman premium. Math Rush & Video Clipper.",
+  description:
+    "Brand teknologi yang menggabungkan kesederhanaan, kecerdasan, dan pengalaman premium. Math Rush & Video Clipper.",
   icons: {
     icon: "/favicon.ico",
   },
@@ -32,24 +33,31 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
-        {/* Google Analytics */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z255FJE85S"></script>
-        <script dangerouslySetInnerHTML={{ __html: `
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-Z255FJE85S');
-        `}} />
-
-        {/* Google AdSense */}
-        <Script
+        {/* Google AdSense — pakai <script> biasa agar tidak dapat data-nscript dari Next.js */}
+        <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3213485046839115"
           crossOrigin="anonymous"
-          strategy="afterInteractive"
         />
       </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+
+      <body className="min-h-full flex flex-col">
+        {children}
+
+        {/* Google Analytics — pakai <Script> Next.js di luar <head>, strategy afterInteractive */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-Z255FJE85S"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-Z255FJE85S');
+          `}
+        </Script>
+      </body>
     </html>
   );
 }

@@ -58,14 +58,17 @@ export default function Home() {
           {/* StreamVista - Featured */}
           <div className="max-w-2xl mx-auto">
             <div className="group bg-zinc-900/60 rounded-2xl overflow-hidden border border-white/8 hover:border-blue-500/40 transition-all duration-300">
-              <div className="h-72 bg-gradient-to-br from-blue-950/60 to-zinc-900 relative overflow-hidden flex items-center justify-center">
+              <div className="h-72 bg-linear-to-br from-blue-950/60 to-zinc-900 relative overflow-hidden flex items-center justify-center">
                 <div className="relative w-36 h-36 group-hover:scale-105 transition-transform duration-500">
+                  {/* priority + loading="eager" untuk fix LCP warning */}
                   <Image
                     src="/streamvista/icons/icon-master-4096.png"
                     alt="StreamVista"
                     fill
                     sizes="144px"
                     className="object-contain rounded-2xl"
+                    priority
+                    loading="eager"
                   />
                 </div>
               </div>
@@ -78,8 +81,9 @@ export default function Home() {
                 <p className="text-white/45 text-sm leading-relaxed mb-8">
                   Tonton siaran TV dari seluruh dunia secara gratis. Ribuan channel dari berbagai negara tersedia di genggamanmu. Tanpa biaya, tanpa registrasi.
                 </p>
-                
-                  <a href="/streamvista"
+
+                <a
+                  href="/streamvista"
                   className="block w-full py-3.5 bg-blue-600 hover:bg-blue-500 text-white rounded-full text-sm font-semibold text-center transition-all duration-200"
                 >
                   Buka StreamVista →
