@@ -1,9 +1,9 @@
 export const metadata = {
-  title: "Privacy Policy - PrestigeSync",
-  description: "Privacy Policy for the PrestigeSync website and products",
+  title: "Privacy Policy - StreamVista",
+  description: "Privacy Policy for the StreamVista TV streaming app",
 };
 
-export default function PrivacyPolicyPage() {
+export default function StreamVistaPrivacyPolicy() {
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-white">
       {/* Simple Nav */}
@@ -22,33 +22,50 @@ export default function PrivacyPolicyPage() {
       </nav>
 
       <article className="max-w-3xl mx-auto px-6 pt-32 pb-24">
-        <h1 className="text-4xl font-bold mb-2">Privacy Policy - PrestigeSync</h1>
+        <h1 className="text-4xl font-bold mb-2">Privacy Policy - StreamVista</h1>
         <p className="text-gray-500 text-sm mb-10">Last updated: June 27, 2026</p>
 
         <p className="text-gray-300 leading-relaxed mb-8">
-          This Privacy Policy describes how PrestigeSync (&quot;we&quot;, &quot;our&quot;) collects,
-          uses, and shares information when you visit our website and use our products,
-          including StreamVista and Math Rush.
+          This Privacy Policy describes how StreamVista (&quot;we&quot;, &quot;our&quot;, &quot;the app&quot;)
+          collects, uses, and shares information when you use our web application.
         </p>
 
         <Section title="1. Information We Collect">
           <p>
-            We do not require account registration to browse our website. However, our
-            site and apps use third-party services (described below) that may
-            automatically collect certain technical and device information.
+            StreamVista does not require account registration and does not directly
+            collect personally identifiable information such as your name, email, or
+            phone number.
+          </p>
+          <p>
+            However, our app uses third-party services (described below) that may
+            automatically collect certain technical and device information to provide
+            advertising and app functionality.
           </p>
         </Section>
 
-        <Section title="2. Advertising (Google AdSense)">
+        <Section title="2. TV Streaming Content">
           <p>
-            We use <strong className="text-white">Google AdSense</strong> to display
-            advertisements on our website. Google AdSense may collect and process the
-            following types of data:
+            StreamVista aggregates publicly available TV channel streams from
+            third-party sources (such as the iptv-org public directory). We do not
+            host, own, or control the content of these streams.
+          </p>
+          <p>
+            We are not responsible for the availability, accuracy, legality, or content
+            of any third-party streams accessible through the app. Stream availability
+            may vary by region and is subject to change without notice.
+          </p>
+        </Section>
+
+        <Section title="3. Advertising (Google AdSense)">
+          <p>
+            We may use <strong className="text-white">Google AdSense</strong> to display
+            advertisements within the app. AdSense may collect and process the following
+            types of data:
           </p>
           <ul className="list-disc pl-6 space-y-1 text-gray-300">
             <li>Device identifiers and cookies</li>
             <li>IP address and approximate location</li>
-            <li>Browsing and ad interaction data (impressions, clicks)</li>
+            <li>App usage and ad interaction data (impressions, clicks)</li>
           </ul>
           <p>
             This data may be used to serve personalized or non-personalized ads, measure
@@ -78,63 +95,47 @@ export default function PrivacyPolicyPage() {
           </p>
         </Section>
 
-        <Section title="3. Analytics (Google Analytics)">
+        <Section title="4. Data Storage">
           <p>
-            We use Google Analytics to understand how visitors use our website, including
-            pages visited, time spent, and general location. This data is aggregated and
-            does not personally identify you.
+            App preferences, such as favorite channels and last-viewed settings, are
+            stored locally on your device using local storage. We do not operate a
+            remote server that stores your personal data or viewing activity.
           </p>
         </Section>
 
-        <Section title="4. StreamVista">
+        <Section title="5. Children's Privacy">
           <p>
-            StreamVista aggregates publicly available TV channel streams from third-party
-            sources. We do not host or control the content of these streams and are not
-            responsible for their availability or content.
+            StreamVista is not specifically directed at children under 13. We do not
+            knowingly collect personal information from children. If you believe a
+            child has provided us with personal information, please contact us so we
+            can take appropriate action.
           </p>
         </Section>
 
-        <Section title="5. Math Rush (Mobile App)">
+        <Section title="6. Data Sharing">
           <p>
-            Math Rush uses Google AdMob for in-app advertising, which may collect device
-            identifiers, IP address, and ad interaction data. Game progress may be stored
-            locally on your device or via Supabase (not linked to your real identity).
+            We do not sell your personal information. Data may be shared with
+            third-party service providers (Google AdSense) solely for the purpose of
+            providing app functionality and advertising as described above.
           </p>
         </Section>
 
-        <Section title="6. Children's Privacy">
+        <Section title="7. Your Choices">
           <p>
-            Our website and products are not specifically directed at children under 13.
-            We do not knowingly collect personal information from children. If you believe
-            a child has provided us with personal information, please contact us so we can
-            take appropriate action.
+            You may opt out of personalized advertising through your browser settings,
+            or stop using the app at any time to stop all data collection associated
+            with it.
           </p>
         </Section>
 
-        <Section title="7. Data Sharing">
+        <Section title="8. Changes to This Policy">
           <p>
-            We do not sell your personal information. Data may be shared with third-party
-            service providers (Google AdSense, Google Analytics, Google AdMob, Supabase)
-            solely for the purpose of providing our services and advertising as described
-            above.
+            We may update this Privacy Policy from time to time. Changes will be
+            posted on this page with an updated revision date.
           </p>
         </Section>
 
-        <Section title="8. Your Choices">
-          <p>
-            You may opt out of personalized advertising through your browser or device
-            settings, or by using cookie/ad-blocking controls in your browser.
-          </p>
-        </Section>
-
-        <Section title="9. Changes to This Policy">
-          <p>
-            We may update this Privacy Policy from time to time. Changes will be posted on
-            this page with an updated revision date.
-          </p>
-        </Section>
-
-        <Section title="10. Contact Us">
+        <Section title="9. Contact Us">
           <p>
             If you have any questions about this Privacy Policy, please contact us at:
             <br />

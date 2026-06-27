@@ -1,9 +1,9 @@
 export const metadata = {
-  title: "Privacy Policy - PullDown",
-  description: "Privacy Policy for the PullDown mobile app",
+  title: "Privacy Policy - Math Rush",
+  description: "Privacy Policy for the Math Rush mobile app",
 };
 
-export default function PullDownPrivacyPolicy() {
+export default function PrivacyPolicyPage() {
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-white">
       {/* Simple Nav */}
@@ -22,56 +22,31 @@ export default function PullDownPrivacyPolicy() {
       </nav>
 
       <article className="max-w-3xl mx-auto px-6 pt-32 pb-24">
-        <h1 className="text-4xl font-bold mb-2">Privacy Policy - PullDown</h1>
-        <p className="text-gray-500 text-sm mb-10">Last updated: June 25, 2026</p>
+        <h1 className="text-4xl font-bold mb-2">Privacy Policy - Math Rush</h1>
+        <p className="text-gray-500 text-sm mb-10">Last updated: June 19, 2026</p>
 
         <p className="text-gray-300 leading-relaxed mb-8">
-          This Privacy Policy describes how PullDown (&quot;we&quot;, &quot;our&quot;, &quot;the app&quot;)
-          collects, uses, and shares information when you use our mobile application.
+          This Privacy Policy describes how Math Rush (&quot;we&quot;, &quot;our&quot;, &quot;the app&quot;) collects,
+          uses, and shares information when you use our mobile application.
         </p>
 
         <Section title="1. Information We Collect">
           <p>
-            PullDown does not require account registration and does not directly collect
+            Math Rush itself does not require account registration and does not directly collect
             personally identifiable information such as your name, email, or phone number.
           </p>
           <p>
-            However, our app uses third-party services (described below) that may
-            automatically collect certain technical and device information to provide
-            advertising and app functionality.
+            However, our app uses third-party services (described below) that may automatically
+            collect certain technical and device information to provide advertising and app
+            functionality.
           </p>
         </Section>
 
-        <Section title="2. Media Download Functionality">
+        <Section title="2. Advertising (Google AdMob)">
           <p>
-            PullDown allows users to download publicly accessible video, audio, and other
-            file content from URLs that the user provides. The app processes the URL
-            locally on your device to fetch and save the requested file to your
-            device&apos;s storage.
-          </p>
-          <p>
-            We do not host, store, or have access to any files you download. All
-            downloaded content is saved directly to your device and remains under your
-            control. Users are solely responsible for ensuring they have the right to
-            download and use any content they access through the app, and for complying
-            with the terms of service of the source platforms they download from, as well
-            as applicable copyright laws.
-          </p>
-        </Section>
-
-        <Section title="3. Device Storage Permission">
-          <p>
-            PullDown requests storage-related permissions solely to save downloaded files
-            to your device. These permissions are used only for this purpose and are not
-            used to access, scan, or upload any other files on your device.
-          </p>
-        </Section>
-
-        <Section title="4. Advertising (Google AdMob)">
-          <p>
-            We use <strong className="text-white">Google AdMob</strong> to display banner
-            and interstitial advertisements within the app. AdMob may collect and process
-            the following types of data:
+            We use <strong className="text-white">Google AdMob</strong> to display banner,
+            interstitial, and rewarded advertisements within the app. AdMob may collect and
+            process the following types of data:
           </p>
           <ul className="list-disc pl-6 space-y-1 text-gray-300">
             <li>Device identifiers (such as Advertising ID)</li>
@@ -81,8 +56,8 @@ export default function PullDownPrivacyPolicy() {
           </ul>
           <p>
             This data may be used to serve personalized or non-personalized ads, measure ad
-            performance, and prevent fraud. For more information about how Google collects
-            and uses data, please visit{" "}
+            performance, and prevent fraud. For more information about how Google collects and
+            uses data, please visit{" "}
             <a
               href="https://policies.google.com/technologies/partner-sites"
               target="_blank"
@@ -99,46 +74,45 @@ export default function PullDownPrivacyPolicy() {
           </p>
         </Section>
 
-        <Section title="5. Data Storage">
+        <Section title="3. Data Storage">
           <p>
-            App preferences and download history are stored locally on your device. We do
-            not operate any remote server that stores your personal data or download
-            activity.
+            Game progress, scores, and preferences may be stored locally on your device using
+            local storage. We may also use Supabase to store leaderboard scores (such as
+            nickname/country and score), which are not linked to your real identity.
           </p>
         </Section>
 
-        <Section title="6. Children's Privacy">
+        <Section title="4. Children's Privacy">
           <p>
-            PullDown is not specifically directed at children under 13. We do not knowingly
-            collect personal information from children. If you believe a child has provided
-            us with personal information, please contact us so we can take appropriate
-            action.
+            Math Rush is not specifically directed at children under 13. We do not knowingly
+            collect personal information from children. If you believe a child has provided us
+            with personal information, please contact us so we can take appropriate action.
           </p>
         </Section>
 
-        <Section title="7. Data Sharing">
+        <Section title="5. Data Sharing">
           <p>
             We do not sell your personal information. Data may be shared with third-party
-            service providers (Google AdMob) solely for the purpose of providing app
+            service providers (Google AdMob, Supabase) solely for the purpose of providing app
             functionality and advertising as described above.
           </p>
         </Section>
 
-        <Section title="8. Your Choices">
+        <Section title="6. Your Choices">
           <p>
             You may opt out of personalized advertising through your device settings, or
             uninstall the app at any time to stop all data collection associated with it.
           </p>
         </Section>
 
-        <Section title="9. Changes to This Policy">
+        <Section title="7. Changes to This Policy">
           <p>
-            We may update this Privacy Policy from time to time. Changes will be posted on
-            this page with an updated revision date.
+            We may update this Privacy Policy from time to time. Changes will be posted on this
+            page with an updated revision date.
           </p>
         </Section>
 
-        <Section title="10. Contact Us">
+        <Section title="8. Contact Us">
           <p>
             If you have any questions about this Privacy Policy, please contact us at:
             <br />
