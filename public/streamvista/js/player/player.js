@@ -58,7 +58,7 @@ function buildShareUrl(channel) {
         .replace(/[^a-z0-9]+/g, "-")
         .replace(/^-|-$/g, "");
     const params = new URLSearchParams({ play: slug, src: channel.url });
-    return BASE_URL + "/?" + params.toString();
+    return BASE_URL + "/streamvista?" + params.toString();
 }
 
 function initShareChannel() {
