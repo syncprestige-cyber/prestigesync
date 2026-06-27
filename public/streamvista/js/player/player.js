@@ -1,5 +1,12 @@
 // js/player/player.js
-import { state, addToRecent, toggleFavorite } from "../core/state.js";
+import {
+    state,
+    addToRecent,
+    toggleFavorite,
+    markChannelDead,
+    markChannelBlocked,
+    markChannelAlive,
+} from "../core/state.js";
 import { getEpgForChannel } from "../api/epg.js";
 import { buildQualityMenu } from "./quality.js";
 import { fmtTime } from "../utils/time.js";
@@ -16,9 +23,12 @@ let sleepEndsAt = null;
 // Fix race condition: simpan referensi playing listener agar bisa di-remove
 // sebelum loadStream dipanggil lagi (navigasi channel cepat)
 let _playingListener = null;
+// Callback dipanggil saat player ditutup — dipakai app.js untuk update card di grid
+let _onClose = null;
 
-export function initPlayer(els) {
+export function initPlayer(els, { onClose } = {}) {
     el = els;
+    _onClose = onClose || null;
     el.closeBtn.addEventListener("click", closePlayer);
     el.favBtn.addEventListener("click", () => {
         if (!currentChannel) return;
@@ -590,6 +600,9 @@ export function closePlayer() {
         el.sidebar.classList.add("hidden");
         el.overlay.classList.remove("sidebar-open");
     }
+    // Panggil callback sebelum reset currentChannel,
+    // supaya app.js tahu channel mana yang perlu di-update cardnya.
+    if (_onClose && currentChannel) _onClose(currentChannel.id);
     currentChannel = null;
     currentIndex = -1;
 }
@@ -598,9 +611,32 @@ export function getCurrentChannel() {
     return currentChannel;
 }
 
-function loadStream(url) {
+function buildProxyUrl(url) {
+    return `/api/stream-proxy?url=${encodeURIComponent(url)}`;
+}
+
+function loadStream(url, viaProxy = false) {
     if (el.qualityBtn) el.qualityBtn.style.display = "none";
     el.qualityMenu?.classList.add("hidden");
+
+    // Deteksi DASH/MPD — browser tidak support format ini tanpa library khusus.
+    // Langsung tampilkan pesan "dash" tanpa coba load, lebih bersih dari
+    // membiarkan browser error sendiri dengan pesan "No decoders found".
+    if (url.includes(".mpd") || url.includes("application/dash")) {
+        showError("dash");
+        return;
+    }
+
+    // Deteksi UDP/multicast — format siaran kabel/LAN internal, sama sekali
+    // tidak bisa diakses dari internet publik maupun browser.
+    if (
+        url.startsWith("udp://") ||
+        url.startsWith("rtp://") ||
+        url.startsWith("igmp://")
+    ) {
+        showError("udp");
+        return;
+    }
 
     const timeout = setTimeout(() => {
         // Phase 3: jangan tampilkan error kalau video terbukti sudah mulai jalan
@@ -618,6 +654,7 @@ function loadStream(url) {
     _playingListener = () => {
         clearTO();
         el.pStatus.classList.add("hidden");
+        if (currentChannel) markChannelAlive(currentChannel.id);
         _playingListener = null;
     };
     el.video.addEventListener("playing", _playingListener, { once: true });
@@ -629,7 +666,7 @@ function loadStream(url) {
                 xhr.timeout = 10000;
             },
         });
-        hls.loadSource(url);
+        hls.loadSource(viaProxy ? buildProxyUrl(url) : url);
         hls.attachMedia(el.video);
         hls.on(Hls.Events.MANIFEST_PARSED, (_, data) => {
             clearTO();
@@ -644,13 +681,65 @@ function loadStream(url) {
         hls.on(Hls.Events.ERROR, (_, data) => {
             if (!data.fatal) return;
             clearTO();
-            const isCors =
+            const code = data.response?.code;
+            const isCorsFail =
+                data.type === Hls.ErrorTypes.NETWORK_ERROR && code === 0;
+            const isHardBlocked =
                 data.type === Hls.ErrorTypes.NETWORK_ERROR &&
-                (data.response?.code === 0 || data.response?.code === 403);
-            showError(isCors ? "cors" : "generic");
+                (code === 403 || code === 502);
+            const isRateLimited =
+                data.type === Hls.ErrorTypes.NETWORK_ERROR && code === 429;
+
+            console.warn(
+                "[HLS fatal error]",
+                "type:",
+                data.type,
+                "details:",
+                data.details,
+                "response code:",
+                code,
+                "url:",
+                data.url || url,
+            );
+
+            // Belum lewat proxy & CORS fail → retry lewat proxy
+            if (isCorsFail && !viaProxy) {
+                destroyHls();
+                loadStream(url, true);
+                return;
+            }
+            // 429 Rate limited — sementara, tandai dead (TTL 6 jam) bukan blocked
+            if (isRateLimited) {
+                showError("ratelimit");
+                return;
+            }
+            // Sudah lewat proxy tapi server tetap menolak (403/502) → blocked permanen
+            if (isHardBlocked || isCorsFail) {
+                showError("blocked");
+                return;
+            }
+            showError("generic");
         });
+
+        // Deteksi DRM: video decode error setelah manifest berhasil dimuat
+        // (stream DRM sering lolos parse manifest tapi gagal decode frame-nya)
+        el.video.addEventListener(
+            "error",
+            () => {
+                const code = el.video.error?.code;
+                if (
+                    code === MediaError.MEDIA_ERR_DECODE ||
+                    code === MediaError.MEDIA_ERR_SRC_NOT_SUPPORTED
+                ) {
+                    clearTO();
+                    destroyHls();
+                    showError("drm");
+                }
+            },
+            { once: true },
+        );
     } else {
-        el.video.src = url;
+        el.video.src = viaProxy ? buildProxyUrl(url) : url;
         el.video.addEventListener(
             "loadeddata",
             () => {
@@ -663,7 +752,20 @@ function loadStream(url) {
             "error",
             () => {
                 clearTO();
-                showError("generic");
+                const code = el.video.error?.code;
+                // DRM / format tidak support (DASH, dll)
+                if (
+                    code === MediaError.MEDIA_ERR_DECODE ||
+                    code === MediaError.MEDIA_ERR_SRC_NOT_SUPPORTED
+                ) {
+                    showError("drm");
+                    return;
+                }
+                if (!viaProxy) {
+                    loadStream(url, true);
+                    return;
+                }
+                showError("blocked");
             },
             { once: true },
         );
@@ -680,14 +782,40 @@ function destroyHls() {
 
 function showError(type = "generic") {
     el.pStatus.classList.remove("hidden");
+
+    // Blocked & DRM & DASH & UDP = kondisi permanen → TTL panjang (7 hari)
+    // 429 Rate limit & timeout & generic = sementara → TTL pendek (6 jam)
+    if (currentChannel) {
+        if (
+            type === "blocked" ||
+            type === "drm" ||
+            type === "dash" ||
+            type === "udp"
+        ) {
+            markChannelBlocked(currentChannel.id);
+        } else {
+            markChannelDead(currentChannel.id);
+        }
+    }
+
     const msg =
         type === "cors"
-            ? "🔒 Channel diblokir CORS.<br>Tekan ↑ ↓ untuk coba channel lain."
-            : type === "timeout"
-              ? "⏱️ Koneksi terlalu lambat.<br>Tekan ↑ ↓ untuk pindah channel."
-              : "⚠️ Channel tidak bisa diputar.<br>Tekan ↑ ↓ untuk pindah channel.";
+            ? "🔒 Channel diblokir CORS — server tidak mengizinkan akses dari browser.<br><small>Tekan ↑ ↓ untuk pindah channel.</small>"
+            : type === "blocked"
+              ? "🚫 Channel ini dibatasi oleh penyedia siaran (geo-block / token kedaluwarsa).<br><small>Tekan ↑ ↓ untuk pindah channel.</small>"
+              : type === "drm"
+                ? "🔐 Channel ini dienkripsi (DRM) dan tidak dapat diputar di browser.<br><small>Tekan ↑ ↓ untuk pindah channel.</small>"
+                : type === "dash"
+                  ? "📺 Channel ini menggunakan format DASH yang tidak didukung browser.<br><small>Tekan ↑ ↓ untuk pindah channel.</small>"
+                  : type === "udp"
+                    ? "📡 Channel ini menggunakan protokol UDP/multicast — hanya bisa diputar di jaringan lokal, tidak via internet.<br><small>Tekan ↑ ↓ untuk pindah channel.</small>"
+                    : type === "ratelimit"
+                      ? "⏳ Server terlalu banyak permintaan (rate limited). Coba lagi beberapa menit lagi.<br><small>Tekan ↑ ↓ untuk pindah channel.</small>"
+                      : type === "timeout"
+                        ? "⏱️ Koneksi timeout — server tidak merespons.<br><small>Tekan ↑ ↓ untuk pindah channel.</small>"
+                        : "⚠️ Channel tidak bisa diputar saat ini.<br><small>Tekan ↑ ↓ untuk pindah channel.</small>";
     el.pStatus.innerHTML =
-        '<p style="text-align:center;line-height:1.7;padding:0 20px">' +
+        '<p style="text-align:center;line-height:1.8;padding:0 20px">' +
         msg +
         "</p>";
 }

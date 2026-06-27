@@ -9,6 +9,7 @@ export const KEYS = {
     epgCache: "streamtv_epg_cache_v1",
     epgMeta: "streamtv_epg_meta_v1",
     theme: "streamtv_theme",
+    deadChannels: "streamtv_dead_channels_v1",
 };
 
 export function load(key, fallback = null) {

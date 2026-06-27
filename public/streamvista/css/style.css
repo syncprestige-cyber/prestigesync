@@ -667,6 +667,49 @@ main {
     background: rgba(229, 87, 95, 0.7);
     border-color: rgba(229, 87, 95, 0.3);
 }
+
+/* ── Badge channel yang beberapa kali gagal diputar ── */
+.channel-card.is-dead {
+    opacity: 0.45;
+}
+.channel-card.is-dead:hover,
+.channel-card.is-dead:active {
+    opacity: 0.75;
+}
+/* is-blocked: lebih redup dari is-dead karena kondisinya permanen di browser */
+.channel-card.is-blocked {
+    opacity: 0.3;
+    filter: grayscale(0.4);
+}
+.channel-card.is-blocked:hover,
+.channel-card.is-blocked:active {
+    opacity: 0.6;
+    filter: grayscale(0);
+}
+.channel-dead-badge {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    font-size: 11px;
+    padding: 3px 6px;
+    border-radius: 100px;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    line-height: 1;
+}
+.channel-blocked-badge {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    font-size: 11px;
+    padding: 3px 6px;
+    border-radius: 100px;
+    background: rgba(40, 10, 10, 0.7);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 80, 80, 0.25);
+    line-height: 1;
+}
 .badge-sample {
     display: inline-block;
     font-size: 10px;

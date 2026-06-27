@@ -1,5 +1,5 @@
 // js/ui/render.js
-import { state } from "../core/state.js";
+import { state, isChannelDead, getChannelDeadType } from "../core/state.js";
 import { escapeHtml, escapeAttr, initials } from "../utils/escape.js";
 
 const CHUNK_SIZE = 60;
@@ -23,6 +23,20 @@ function resetLogoObserver() {
         logoObserver.disconnect();
         logoObserver = null;
     }
+}
+
+/**
+ * Beberapa domain logo diketahui selalu gagal di browser karena:
+ * - Wikipedia/Wikimedia: OpaqueResponseBlocking (SVG dengan CORS ketat)
+ * - upload.wikimedia.org: sama
+ * Logo dari domain ini langsung skip ke fallback initials tanpa dicoba,
+ * untuk menghindari flood error di console.
+ */
+function isBlockedLogoDomain(url) {
+    if (!url) return false;
+    return (
+        url.includes("upload.wikimedia.org") || url.includes("wikipedia.org")
+    );
 }
 
 function getLogoObserver() {
@@ -85,6 +99,9 @@ function buildCard(c, onOpen, onFavToggle) {
     const isFav = state.favorites.has(c.id);
     const isRecent = state.recentSet.has(c.id);
     const isCustom = c.source === "custom";
+    const isDead = isChannelDead(c.id);
+    const deadType = isDead ? getChannelDeadType(c.id) : null;
+    const isBlocked = deadType === "blocked";
     const subText = isCustom
         ? c.group && c.group !== "Custom"
             ? c.group
@@ -93,7 +110,9 @@ function buildCard(c, onOpen, onFavToggle) {
     const fb = escapeHtml(initials(c.name));
 
     const card = document.createElement("div");
-    card.className = "channel-card";
+    // is-blocked: opacity lebih rendah + tidak ada harapan TTL pendek
+    card.className =
+        "channel-card" + (isBlocked ? " is-blocked" : isDead ? " is-dead" : "");
 
     // Stagger: max 30 card pertama di-animasi, sisanya langsung muncul
     const delay = Math.min(_cardStaggerIdx, 29) * 18;
@@ -108,7 +127,7 @@ function buildCard(c, onOpen, onFavToggle) {
         </div>
         <div class="channel-logo">
             ${
-                c.logo
+                c.logo && !isBlockedLogoDomain(c.logo)
                     ? `<span class="logo-placeholder"
                            data-src="${escapeAttr(c.logo)}"
                            data-alt="${escapeAttr(c.name)}">
@@ -123,10 +142,17 @@ function buildCard(c, onOpen, onFavToggle) {
         </div>
         ${isCustom ? `<div class="channel-source-badge">Custom</div>` : ""}
         ${isRecent ? `<div class="channel-recent-badge" title="Terakhir ditonton">▶</div>` : ""}
+        ${
+            isBlocked
+                ? `<div class="channel-blocked-badge" title="Channel ini menggunakan DRM atau dibatasi penyedia — tidak bisa diputar di browser">🔐</div>`
+                : isDead
+                  ? `<div class="channel-dead-badge" title="Beberapa kali gagal diputar, mungkin sedang offline">⚠️</div>`
+                  : ""
+        }
     `;
 
-    // Lazy-load logo
-    if (c.logo) {
+    // Lazy-load logo — skip domain yang diketahui selalu gagal
+    if (c.logo && !isBlockedLogoDomain(c.logo)) {
         const placeholder = card.querySelector(".logo-placeholder");
         if (placeholder) getLogoObserver().observe(placeholder);
     }
@@ -229,4 +255,57 @@ export function render(els, onOpen, onFavToggle) {
     };
 
     chunk();
+}
+
+/**
+ * Update status badge (⚠️/🔐) satu card di DOM tanpa re-render seluruh grid.
+ * Dipanggil dari app.js via callback onClose di initPlayer,
+ * supaya badge langsung muncul saat player ditutup — bukan setelah refresh.
+ *
+ * @param {string} channelId
+ */
+export function updateCardInGrid(channelId) {
+    const grid = document.getElementById("channelGrid");
+    if (!grid) return;
+
+    // Cari card berdasarkan data attribute — kita perlu tag card dengan channel id.
+    // Card saat ini tidak punya data-id, jadi kita iterate state.currentList
+    // untuk tahu index-nya lalu ambil card ke-N dari grid.
+    const idx = state.currentList.findIndex((c) => c.id === channelId);
+    if (idx < 0 || idx >= state.renderedCount) return; // belum di-render atau tidak ada
+
+    // Card ke-idx di grid (tidak hitung sentinel div)
+    const cards = grid.querySelectorAll(".channel-card");
+    const card = cards[idx];
+    if (!card) return;
+
+    const isDead = isChannelDead(channelId);
+    const deadType = isDead ? getChannelDeadType(channelId) : null;
+    const isBlocked = deadType === "blocked";
+
+    // Update class
+    card.classList.remove("is-dead", "is-blocked");
+    if (isBlocked) card.classList.add("is-blocked");
+    else if (isDead) card.classList.add("is-dead");
+
+    // Update badge
+    const existingBadge = card.querySelector(
+        ".channel-dead-badge, .channel-blocked-badge",
+    );
+    if (existingBadge) existingBadge.remove();
+
+    if (isBlocked) {
+        const badge = document.createElement("div");
+        badge.className = "channel-blocked-badge";
+        badge.title =
+            "Channel ini menggunakan DRM atau dibatasi penyedia — tidak bisa diputar di browser";
+        badge.textContent = "🔐";
+        card.appendChild(badge);
+    } else if (isDead) {
+        const badge = document.createElement("div");
+        badge.className = "channel-dead-badge";
+        badge.title = "Beberapa kali gagal diputar, mungkin sedang offline";
+        badge.textContent = "⚠️";
+        card.appendChild(badge);
+    }
 }

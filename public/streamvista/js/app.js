@@ -6,7 +6,7 @@ import { loadAllPlaylists } from "./playlist/manager.js";
 import { buildFilterStrips, buildGroupStrip } from "./ui/filter.js";
 import { initModal, renderPlaylistList } from "./ui/modal.js";
 import { initPlayer, openPlayer } from "./player/player.js";
-import { render } from "./ui/render.js";
+import { render, updateCardInGrid } from "./ui/render.js";
 
 /* ── DOM refs ── */
 const el = {
@@ -66,7 +66,7 @@ async function init() {
     syncDefaultPlaylists();
     loadEpg();
 
-    initPlayer(el);
+    initPlayer(el, { onClose: (channelId) => updateCardInGrid(channelId) });
     initModal(el, doRender);
     bindNavEvents();
 
