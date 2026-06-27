@@ -33,6 +33,9 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
+        {/* Verifikasi kepemilikan AdSense */}
+        <meta name="google-adsense-account" content="ca-pub-3213485046839115" />
+
         {/* Google AdSense — pakai <script> biasa agar tidak dapat data-nscript dari Next.js */}
         <script
           async
