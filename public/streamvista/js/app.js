@@ -1,5 +1,6 @@
 // js/app.js — entry point
 import { state, syncDefaultPlaylists, toggleFavorite } from "./core/state.js";
+import { getKnownChannelSrc } from "./core/known-channels.js";
 import { loadIptvChannels } from "./api/iptv.js";
 import { loadEpg } from "./api/epg.js";
 import { loadAllPlaylists } from "./playlist/manager.js";
@@ -150,11 +151,15 @@ if ("serviceWorker" in navigator) {
 }
 
 // Handle deep link: ?play=nama-channel&src=url-stream
+// Kalau "play" ketemu di KNOWN_CHANNELS, "src" jadi opsional —
+// supaya link share bisa pendek: ?play=alkass-four
 function handleDeepLink() {
     const params = new URLSearchParams(window.location.search);
-    const src = params.get("src");
     const play = params.get("play");
-    if (!src || !play) return;
+    if (!play) return;
+
+    const src = params.get("src") || getKnownChannelSrc(play);
+    if (!src) return;
 
     // Tunggu channel selesai load, lalu cari dan play
     const tryOpen = () => {
