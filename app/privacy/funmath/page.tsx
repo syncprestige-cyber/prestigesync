@@ -87,19 +87,32 @@ export default function FunMathPrivacyPolicy() {
 
         <Section title="5. AI Brain Coach Feature">
           <p>
-            Our optional &quot;AI Brain Coach&quot; feature analyzes your session statistics
-            (score, correct-answer count, combo streak) to generate a short performance
-            summary. Only gameplay statistics are sent for this analysis — no personally
-            identifiable information — and this data is not retained by the analysis service
-            beyond generating your result.
+            Our optional &quot;AI Brain Coach&quot; feature uses{" "}
+            <strong className="text-white">Google Gemini via Firebase AI Logic</strong> to
+            analyze your session statistics (score, correct-answer count, combo streak) and
+            generate a short performance summary. Only gameplay statistics are sent for this
+            analysis — no personally identifiable information is included, and this data is
+            not retained by the analysis service beyond generating your result.
+          </p>
+          <p>
+            For more information on how Google processes this data, please visit{" "}
+            <a
+              href="https://firebase.google.com/support/privacy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-orange-400 hover:text-orange-300 underline"
+            >
+              firebase.google.com/support/privacy
+            </a>
+            .
           </p>
         </Section>
 
         <Section title="6. Advertising (Google AdMob)">
           <p>
             We use <strong className="text-white">Google AdMob</strong> to display banner,
-            interstitial, and rewarded video advertisements within the app to support the
-            app remaining free. AdMob may collect and process the following types of data:
+            interstitial, native, and rewarded video advertisements within the app to support
+            the app remaining free. AdMob may collect and process the following types of data:
           </p>
           <ul className="list-disc pl-6 space-y-1 text-gray-300">
             <li>Device identifiers (such as Advertising ID)</li>
@@ -138,19 +151,21 @@ export default function FunMathPrivacyPolicy() {
 
         <Section title="7. Children's Privacy">
           <p>
-            FUN MATH may be used by a general audience, including children under parental
-            supervision. We do not knowingly collect personal information from children
-            beyond the optional nickname described above. If you are a parent or guardian
-            and believe your child has provided us with information that should be removed,
-            please contact us so we can take appropriate action.
+            FUN MATH is intended for a general audience aged 13 and above, consistent with
+            our target audience declaration on Google Play. We do not knowingly collect
+            personal information from children under 13. If you are a parent or guardian and
+            believe a child under 13 has provided us with information, please contact us at
+            the email below so we can take appropriate action, including deletion of that
+            information.
           </p>
         </Section>
 
         <Section title="8. Data Sharing">
           <p>
             We do not sell your personal information. Data may be shared with third-party
-            service providers (Google AdMob, Firebase) solely for the purpose of providing
-            app functionality, the Global Leaderboard, and advertising as described above.
+            service providers (Google AdMob, Firebase, including Firebase AI Logic) solely
+            for the purpose of providing app functionality, the Global Leaderboard, the AI
+            Brain Coach feature, and advertising as described above.
           </p>
         </Section>
 
@@ -160,6 +175,13 @@ export default function FunMathPrivacyPolicy() {
             in-app &quot;Reset&quot; options. You may opt out of personalized advertising
             through your device settings, or uninstall the app at any time to stop all data
             collection associated with it.
+          </p>
+          <p>
+            If you are located in the European Economic Area (EEA), United Kingdom, or
+            Switzerland, you may have additional rights under applicable data protection law,
+            including the right to request access to, correction of, or deletion of your
+            data. Since we only store a nickname and score for the Global Leaderboard, you
+            may exercise these rights by contacting us at the email below.
           </p>
         </Section>
 
