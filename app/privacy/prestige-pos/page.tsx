@@ -10,10 +10,10 @@ export default function PrivacyPolicyPage() {
       <nav className="fixed top-0 w-full z-50 border-b border-white/10 bg-black/80 backdrop-blur-md">
         <div className="max-w-3xl mx-auto px-6 py-5 flex justify-between items-center">
           <a href="/" className="flex items-center gap-3">
-            <div className="w-9 h-9 bg-gradient-to-br from-[#C8A24A] to-[#E5C158] rounded-xl flex items-center justify-center font-bold text-xl text-black">
+            <div className="w-9 h-9 bg-linear-to-br from-[#C8A24A] to-[#E5C158] rounded-xl flex items-center justify-center font-bold text-xl text-black">
               PS
             </div>
-            <span className="text-xl font-semibold tracking-tight text-white">Prestige POS</span>
+            <span className="text-xl font-semibold tracking-tight text-white">PrestigeSync</span>
           </a>
           <a href="/" className="px-5 py-2 border border-white/20 rounded-full text-sm font-medium hover:bg-white/5 transition text-gray-300">
             &larr; Kembali
@@ -193,7 +193,7 @@ export default function PrivacyPolicyPage() {
       </article>
 
       <footer className="border-t border-white/10 py-10 text-center text-sm text-gray-500">
-        <p>&copy; 2024 - {new Date().getFullYear()} Prestige POS. All rights reserved.</p>
+        <p>&copy; 2024 - {new Date().getFullYear()} PrestigeSync. All rights reserved.</p>
       </footer>
     </main>
   );
