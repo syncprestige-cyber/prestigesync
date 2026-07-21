@@ -10,13 +10,13 @@ export default function PrivacyPolicyPage() {
       <nav className="fixed top-0 w-full z-50 border-b border-white/10 bg-black/80 backdrop-blur-md">
         <div className="max-w-3xl mx-auto px-6 py-5 flex justify-between items-center">
           <a href="/" className="flex items-center gap-3">
-            <div className="w-9 h-9 bg-linear-to-br from-orange-500 to-amber-500 rounded-xl flex items-center justify-center font-bold text-xl">
+            <div className="w-9 h-9 bg-gradient-to-br from-[#C8A24A] to-[#E5C158] rounded-xl flex items-center justify-center font-bold text-xl text-black">
               PS
             </div>
-            <span className="text-xl font-semibold tracking-tight text-white">PrestigeSync</span>
+            <span className="text-xl font-semibold tracking-tight text-white">Prestige POS</span>
           </a>
           <a href="/" className="px-5 py-2 border border-white/20 rounded-full text-sm font-medium hover:bg-white/5 transition text-gray-300">
-            ← Kembali
+            &larr; Kembali
           </a>
         </div>
       </nav>
@@ -81,33 +81,33 @@ export default function PrivacyPolicyPage() {
               <tbody className="divide-y divide-white/5 text-gray-400">
                 <tr>
                   <td className="p-4 text-white">Cashier & Product Management</td>
-                  <td className="p-4 text-green-400">✅ Yes</td>
-                  <td className="p-4 text-red-400">❌ No</td>
+                  <td className="p-4 text-green-400">&nbsp;Yes</td>
+                  <td className="p-4 text-red-400">&nbsp;No</td>
                 </tr>
                 <tr>
                   <td className="p-4 text-white">Camera Barcode Scanner</td>
-                  <td className="p-4 text-green-400">✅ Yes</td>
-                  <td className="p-4 text-red-400">❌ No</td>
+                  <td className="p-4 text-green-400">&nbsp;Yes</td>
+                  <td className="p-4 text-red-400">&nbsp;No</td>
                 </tr>
                 <tr>
                   <td className="p-4 text-white">Receipt Theme Customization</td>
-                  <td className="p-4 text-green-400">✅ Yes</td>
-                  <td className="p-4 text-red-400">❌ No</td>
+                  <td className="p-4 text-green-400">&nbsp;Yes</td>
+                  <td className="p-4 text-red-400">&nbsp;No</td>
                 </tr>
                 <tr>
                   <td className="p-4 text-white">Sales Analytics & Charts (Vico)</td>
-                  <td className="p-4 text-green-400">✅ Yes</td>
-                  <td className="p-4 text-red-400">❌ No</td>
+                  <td className="p-4 text-green-400">&nbsp;Yes</td>
+                  <td className="p-4 text-red-400">&nbsp;No</td>
                 </tr>
                 <tr>
                   <td className="p-4 text-white">Local Database Storage (Room)</td>
-                  <td className="p-4 text-green-400">✅ Yes</td>
-                  <td className="p-4 text-red-400">❌ No</td>
+                  <td className="p-4 text-green-400">&nbsp;Yes</td>
+                  <td className="p-4 text-red-400">&nbsp;No</td>
                 </tr>
                 <tr>
                   <td className="p-4 text-white">Ad Service (Google AdMob)</td>
-                  <td className="p-4 text-red-400">❌ No</td>
-                  <td className="p-4 text-green-400">✅ Yes</td>
+                  <td className="p-4 text-red-400">&nbsp;No</td>
+                  <td className="p-4 text-green-400">&nbsp;Yes</td>
                 </tr>
               </tbody>
             </table>
@@ -193,7 +193,7 @@ export default function PrivacyPolicyPage() {
       </article>
 
       <footer className="border-t border-white/10 py-10 text-center text-sm text-gray-500">
-        <p>© 2024 - {new Date().getFullYear()} PrestigeSync. All rights reserved.</p>
+        <p>&copy; 2024 - {new Date().getFullYear()} Prestige POS. All rights reserved.</p>
       </footer>
     </main>
   );
