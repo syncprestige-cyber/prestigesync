@@ -92,15 +92,15 @@ export default function Home() {
             </div>
           </div>
 
-          {/* StreamVista - Featured */}
+          {/* FunMath - Featured */}
           <div className="max-w-2xl mx-auto">
             <div className="group bg-zinc-900/60 rounded-2xl overflow-hidden border border-white/8 hover:border-blue-500/40 transition-all duration-300">
               <div className="h-72 bg-linear-to-br from-blue-950/60 to-zinc-900 relative overflow-hidden flex items-center justify-center">
                 <div className="relative w-36 h-36 group-hover:scale-105 transition-transform duration-500">
                   {/* priority + loading="eager" untuk fix LCP warning */}
                   <Image
-                    src="/streamvista/icons/icon-master-4096.png"
-                    alt="StreamVista"
+                    src="/funmath/icons/funmath.png"
+                    alt="Fun Math"
                     fill
                     sizes="144px"
                     className="object-contain rounded-2xl"
@@ -111,19 +111,19 @@ export default function Home() {
               </div>
               <div className="p-8">
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full font-medium">TV Streaming</span>
+                  <span className="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full font-medium">Fun Math</span>
                   <span className="px-3 py-1 bg-green-500/10 text-green-400 text-xs rounded-full font-medium">● Live</span>
                 </div>
-                <h3 className="text-3xl font-semibold tracking-tight mb-3">StreamVista</h3>
+                <h3 className="text-3xl font-semibold tracking-tight mb-3">Fun Math</h3>
                 <p className="text-white/45 text-sm leading-relaxed mb-8">
-                  Tonton siaran TV dari seluruh dunia secara gratis. Ribuan channel dari berbagai negara tersedia di genggamanmu. Tanpa biaya, tanpa registrasi.
+                  Game Matematika yang menyenangkan untuk anak-anak. Latih kemampuan berhitung, penjumlahan, pengurangan, perkalian, dan pembagian dengan cara yang interaktif dan seru.
                 </p>
 
                 <a
-                  href="/streamvista"
+                  href="https://play.google.com/store/apps/details?id=com.aistudio.mathkilat.gmqxpv"
                   className="block w-full py-3.5 bg-blue-600 hover:bg-blue-500 text-white rounded-full text-sm font-semibold text-center transition-all duration-200"
                 >
-                  Buka StreamVista →
+                  Download Fun Math →
                 </a>
               </div>
             </div>
