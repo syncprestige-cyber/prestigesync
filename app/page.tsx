@@ -35,7 +35,7 @@ export default function Home() {
       <div className="border-t border-b border-white/[0.07] py-8">
         <div className="max-w-xl mx-auto flex justify-center gap-16 text-center">
           <div>
-            <p className="text-xl font-bold tracking-tight">1+</p>
+            <p className="text-xl font-bold tracking-tight">3+</p>
             <p className="text-xs text-white/35 mt-1 tracking-wide">Produk Aktif</p>
           </div>
           <div>
@@ -93,15 +93,41 @@ export default function Home() {
           </div>
 
           {/* Coming Soon */}
-          <div className="mt-16 grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+          <div className="mt-16 grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
             <a
               href="https://play.google.com/store/apps/details?id=com.aistudio.mathkilat.gmqxpv"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-zinc-900/60 rounded-2xl border border-white/8 hover:border-orange-500/40 p-6 text-center transition-all duration-300"
             >
-              <div className="text-4xl mb-3">🎮</div>
+              <div className="relative w-12 h-12 mx-auto mb-3">
+                <Image
+                  src="/funmath/icons/funmath.png"
+                  alt="Fun Math"
+                  fill
+                  sizes="48px"
+                  className="object-contain rounded-xl"
+                />
+              </div>
               <h4 className="font-medium text-sm text-white">Fun Math</h4>
+              <p className="text-xs text-green-400 mt-1">● Live</p>
+            </a>
+            <a
+              href="https://play.google.com/store/apps/details?id=com.prestigesync.calender"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-zinc-900/60 rounded-2xl border border-white/8 hover:border-orange-500/40 p-6 text-center transition-all duration-300"
+            >
+              <div className="relative w-12 h-12 mx-auto mb-3">
+                <Image
+                  src="/kalender/icons/kalender.png"
+                  alt="Kalender"
+                  fill
+                  sizes="48px"
+                  className="object-contain rounded-xl"
+                />
+              </div>
+              <h4 className="font-medium text-sm text-white">Kalender</h4>
               <p className="text-xs text-green-400 mt-1">● Live</p>
             </a>
             <div className="bg-zinc-900/30 rounded-2xl border border-white/5 p-6 text-center opacity-40">
