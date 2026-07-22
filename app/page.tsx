@@ -92,46 +92,11 @@ export default function Home() {
             </div>
           </div>
 
-          {/* FunMath - Featured */}
-          <div className="max-w-2xl mx-auto">
-            <div className="group bg-zinc-900/60 rounded-2xl overflow-hidden border border-white/8 hover:border-blue-500/40 transition-all duration-300">
-              <div className="h-72 bg-linear-to-br from-blue-950/60 to-zinc-900 relative overflow-hidden flex items-center justify-center">
-                <div className="relative w-36 h-36 group-hover:scale-105 transition-transform duration-500">
-                  {/* priority + loading="eager" untuk fix LCP warning */}
-                  <Image
-                    src="/funmath/icons/funmath.png"
-                    alt="Fun Math"
-                    fill
-                    sizes="144px"
-                    className="object-contain rounded-2xl"
-                    priority
-                    loading="eager"
-                  />
-                </div>
-              </div>
-              <div className="p-8">
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full font-medium">Fun Math</span>
-                  <span className="px-3 py-1 bg-green-500/10 text-green-400 text-xs rounded-full font-medium">● Live</span>
-                </div>
-                <h3 className="text-3xl font-semibold tracking-tight mb-3">Fun Math</h3>
-                <p className="text-white/45 text-sm leading-relaxed mb-8">
-                  Game Matematika yang menyenangkan untuk anak-anak. Latih kemampuan berhitung, penjumlahan, pengurangan, perkalian, dan pembagian dengan cara yang interaktif dan seru.
-                </p>
-
-                <a
-                  href="https://play.google.com/store/apps/details?id=com.aistudio.mathkilat.gmqxpv"
-                  className="block w-full py-3.5 bg-blue-600 hover:bg-blue-500 text-white rounded-full text-sm font-semibold text-center transition-all duration-200"
-                >
-                  Download Fun Math →
-                </a>
-              </div>
-            </div>
-          </div>
+          
 
           {/* Coming Soon */}
           <div className="mt-16 grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-            {/* <a
+            <a
               href="https://play.google.com/store/apps/details?id=com.aistudio.mathkilat.gmqxpv"
               target="_blank"
               rel="noopener noreferrer"
@@ -148,7 +113,7 @@ export default function Home() {
               </div>
               <h4 className="font-medium text-sm text-white">Fun Math</h4>
               <p className="text-xs text-green-400 mt-1">● Live</p>
-            </a> */}
+            </a>
             <a
               href="https://play.google.com/store/apps/details?id=com.prestigesync.calender"
               target="_blank"
