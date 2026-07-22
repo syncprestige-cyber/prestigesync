@@ -93,13 +93,18 @@ export default function Home() {
           </div>
 
           {/* Coming Soon */}
-          <div className="mt-16 grid md:grid-cols-2 gap-6 max-w-2xl mx-auto opacity-40">
-            <div className="bg-zinc-900/30 rounded-2xl border border-white/5 p-6 text-center">
+          <div className="mt-16 grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+            <a
+              href="https://play.google.com/store/apps/details?id=com.aistudio.mathkilat.gmqxpv"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-zinc-900/60 rounded-2xl border border-white/8 hover:border-orange-500/40 p-6 text-center transition-all duration-300"
+            >
               <div className="text-4xl mb-3">🎮</div>
-              <h4 className="font-medium text-sm text-white/60">Math Rush</h4>
-              <p className="text-xs text-white/30 mt-1">Coming Soon</p>
-            </div>
-            <div className="bg-zinc-900/30 rounded-2xl border border-white/5 p-6 text-center">
+              <h4 className="font-medium text-sm text-white">Fun Math</h4>
+              <p className="text-xs text-green-400 mt-1">● Live</p>
+            </a>
+            <div className="bg-zinc-900/30 rounded-2xl border border-white/5 p-6 text-center opacity-40">
               <div className="text-4xl mb-3">🎬</div>
               <h4 className="font-medium text-sm text-white/60">Video Clipper</h4>
               <p className="text-xs text-white/30 mt-1">Coming Soon</p>
