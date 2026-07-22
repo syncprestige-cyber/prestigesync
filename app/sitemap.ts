@@ -27,13 +27,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.4,
     },
     {
-      url: 'https://prestigesync.vercel.app/privacy/mathrush',
+      url: 'https://prestigesync.vercel.app/privacy/funmath',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.4,
     },
     {
-      url: 'https://prestigesync.vercel.app/privacy/pulldown',
+      url: 'https://prestigesync.vercel.app/privacy/kalender-nusantara',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.4,
+    },
+    {
+      url: 'https://prestigesync.vercel.app/privacy/prestige-pos',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.4,
+    },
+    {
+      url: 'https://prestigesync.vercel.app/privacy/smart-scan',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.4,
