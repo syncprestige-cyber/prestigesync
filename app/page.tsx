@@ -131,7 +131,7 @@ export default function Home() {
 
           {/* Coming Soon */}
           <div className="mt-16 grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-            <a
+            {/* <a
               href="https://play.google.com/store/apps/details?id=com.aistudio.mathkilat.gmqxpv"
               target="_blank"
               rel="noopener noreferrer"
@@ -148,7 +148,7 @@ export default function Home() {
               </div>
               <h4 className="font-medium text-sm text-white">Fun Math</h4>
               <p className="text-xs text-green-400 mt-1">● Live</p>
-            </a>
+            </a> */}
             <a
               href="https://play.google.com/store/apps/details?id=com.prestigesync.calender"
               target="_blank"
